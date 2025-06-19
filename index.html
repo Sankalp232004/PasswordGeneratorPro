@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modern Password Generator</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <main class="container" role="main" aria-labelledby="main-title">
+    <h1 id="main-title">Password Generator</h1>
+    <p class="description">Create strong, secure passwords customized to your needs.</p>
+
+    <input readonly id="password-display" aria-label="Generated password" value="Click Generate to create a password" />
+
+    <div class="controls" aria-label="Password options">
+      <div class="control-group">
+        <label for="length-range">Password Length: <span id="length-value">16</span></label>
+        <input type="range" id="length-range" min="8" max="32" value="16" />
+      </div>
+
+      <fieldset>
+        <legend>Include Characters:</legend>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="include-lowercase" checked /> Lowercase
+          </label>
+          <label>
+            <input type="checkbox" id="include-uppercase" checked /> Uppercase
+          </label>
+          <label>
+            <input type="checkbox" id="include-numbers" checked /> Numbers
+          </label>
+          <label>
+            <input type="checkbox" id="include-symbols" /> Symbols
+          </label>
+        </div>
+      </fieldset>
+    </div>
+
+    <button id="generate-btn" type="button" aria-live="polite" aria-atomic="true">
+      Generate Password
+    </button>
+    <button id="copy-btn" type="button" aria-label="Copy password to clipboard">Copy to Clipboard</button>
+    <p id="strength-indicator" aria-live="polite"></p>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
