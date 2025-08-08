@@ -17,17 +17,14 @@
   const NUMBER_CHARS = '0123456789';
   const SYMBOL_CHARS = '!@#$%^&*()-_=+[]{}|;:,.<>/?';
 
-  // Update length display
   lengthRange.addEventListener('input', () => {
     lengthValue.textContent = lengthRange.value;
   });
 
-  // Generate random character helper
   function getRandomChar(str) {
     return str.charAt(Math.floor(Math.random() * str.length));
   }
 
-  // Generate password
   function generatePassword() {
     let length = parseInt(lengthRange.value, 10);
     let characterPool = '';
@@ -50,7 +47,6 @@
     return password;
   }
 
-  // Button click handler for generating password
   generateBtn.addEventListener('click', () => {
     const newPassword = generatePassword();
     if (newPassword) {
@@ -61,14 +57,12 @@
     }
   });
 
-  // Button click handler for copying password
   copyBtn.addEventListener('click', () => {
     passwordDisplay.select();
     document.execCommand('copy');
     alert('Password copied to clipboard!');
   });
 
-  // Update password strength indicator
   function updateStrengthIndicator(password) {
     let strength = 'Weak';
     if (password.length >= 12 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password)) {
