@@ -3,46 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Modern Password Generator</title>
+  <title>PulsePass | Next-Gen Passwords</title>
   <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <main class="container" role="main" aria-labelledby="main-title">
-    <h1 id="main-title">Password Generator</h1>
-    <p class="description">Create strong, secure passwords customized to your needs.</p>
+  <div class="glow"></div>
+  <div class="grain"></div>
 
-    <input readonly id="password-display" aria-label="Generated password" value="Click Generate to create a password" />
+  <main class="shell" role="main">
+    <header class="hero">
+      <p class="eyebrow">PulsePass Studio</p>
+      <h1>Generate passwords that feel handcrafted</h1>
+      <p>Dial in entropy, save favorites, and ship security that looks as good as it performs.</p>
+    </header>
 
-    <div class="controls" aria-label="Password options">
-      <div class="control-group">
-        <label for="length-range">Password Length: <span id="length-value">16</span></label>
-        <input type="range" id="length-range" min="8" max="32" value="16" />
+    <section class="panel" aria-labelledby="generator-title">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow" id="generator-title">Generator</p>
+          <h2>Control Deck</h2>
+        </div>
+        <div class="chips" aria-live="polite">
+          <span class="chip" id="strength-chip">Strength • —</span>
+          <span class="chip" id="entropy-chip">Entropy • —</span>
+        </div>
       </div>
 
-      <fieldset>
-        <legend>Include Characters:</legend>
-        <div class="checkbox-group">
-          <label>
-            <input type="checkbox" id="include-lowercase" checked /> Lowercase
+      <div class="output-card">
+        <button id="reveal-btn" aria-label="Reveal password">Tap to reveal</button>
+        <div class="password-wrap">
+          <input readonly type="password" id="password-display" aria-label="Generated password" placeholder="Awaiting your first spin" />
+          <div class="actions">
+            <button id="copy-btn" type="button">Copy</button>
+            <button id="refresh-btn" type="button">Shuffle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <label class="slider-label" for="length-range">
+          Length <span id="length-value">16</span>
+        </label>
+        <input type="range" id="length-range" min="8" max="48" value="16" />
+
+        <div class="switchboard" aria-label="Character set toggles">
+          <label class="toggle">
+            <input type="checkbox" id="include-lowercase" checked />
+            <span>Lowercase</span>
           </label>
-          <label>
-            <input type="checkbox" id="include-uppercase" checked /> Uppercase
+          <label class="toggle">
+            <input type="checkbox" id="include-uppercase" checked />
+            <span>Uppercase</span>
           </label>
-          <label>
-            <input type="checkbox" id="include-numbers" checked /> Numbers
+          <label class="toggle">
+            <input type="checkbox" id="include-numbers" checked />
+            <span>Numbers</span>
           </label>
-          <label>
-            <input type="checkbox" id="include-symbols" /> Symbols
+          <label class="toggle">
+            <input type="checkbox" id="include-symbols" />
+            <span>Symbols</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="avoid-similar" />
+            <span>Avoid lookalikes</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="start-letter" />
+            <span>Start with letter</span>
           </label>
         </div>
-      </fieldset>
-    </div>
+      </div>
+    </section>
 
-    <button id="generate-btn" type="button" aria-live="polite" aria-atomic="true">
-      Generate Password
-    </button>
-    <button id="copy-btn" type="button" aria-label="Copy password to clipboard">Copy to Clipboard</button>
-    <p id="strength-indicator" aria-live="polite"></p>
+    <section class="panel" aria-labelledby="insights-title">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow" id="insights-title">Intel</p>
+          <h2>Live Diagnostics</h2>
+        </div>
+      </div>
+
+      <ul class="insights" id="insights-list" aria-live="polite">
+        <li>Waiting for a fresh password...</li>
+      </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="history-title">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow" id="history-title">Vault</p>
+          <h2>Recent Creations</h2>
+        </div>
+        <button id="clear-history" type="button">Clear</button>
+      </div>
+      <div class="history" id="history-list">
+        <p>No passwords yet. Generate one to start the gallery.</p>
+      </div>
+    </section>
   </main>
 
   <script src="index.js"></script>
